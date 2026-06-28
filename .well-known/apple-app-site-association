@@ -1,0 +1,22 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["AWN9PKHG3D.com.eloquentum.app"],
+        "components": [
+          {
+            "/": "/assessment/*",
+            "comment": "English Challenge links open directly in the iOS app when installed"
+          },
+          {
+            "/": "/enterprise/assessments",
+            "comment": "Admin deep links from push notifications"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["AWN9PKHG3D.com.eloquentum.app"]
+  }
+}
