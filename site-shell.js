@@ -10,18 +10,23 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  document.querySelectorAll("a").forEach(function (link) {
-    if (link.textContent.trim().toLowerCase() !== "coming soon") return;
-    link.setAttribute("aria-disabled", "true");
-    link.setAttribute("data-disabled", "true");
-    link.setAttribute("tabindex", "-1");
+  document.querySelectorAll("a, button").forEach(function (control) {
+    if (control.textContent.trim().toLowerCase() !== "coming soon") return;
+    control.setAttribute("aria-disabled", "true");
+    control.setAttribute("data-disabled", "true");
+
+    if (control.tagName.toLowerCase() === "a") {
+      control.setAttribute("tabindex", "-1");
+    } else {
+      control.setAttribute("disabled", "");
+    }
   });
 
   document.addEventListener("click", function (event) {
     var target = event.target;
     if (!target || !target.closest) return;
-    var link = target.closest("a[data-disabled='true']");
-    if (!link) return;
+    var control = target.closest("[data-disabled='true']");
+    if (!control) return;
     event.preventDefault();
   });
 })();
