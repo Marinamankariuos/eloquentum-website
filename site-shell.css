@@ -182,6 +182,14 @@ a:hover {
   transform: translateY(-1px);
 }
 
+a[data-disabled="true"] {
+  cursor: default;
+}
+
+a[data-disabled="true"]:hover {
+  transform: none;
+}
+
 .hero {
   padding-top: 154px;
   padding-bottom: 58px;

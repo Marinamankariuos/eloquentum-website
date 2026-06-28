@@ -167,6 +167,24 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
     addHelpLink('.navlinks');
     addHelpLink('footer .fl');
+
+    function disableComingSoonLinks() {
+      document.querySelectorAll('a').forEach(function(link) {
+        if (link.textContent.trim().toLowerCase() !== 'coming soon') return;
+        link.setAttribute('aria-disabled', 'true');
+        link.setAttribute('data-disabled', 'true');
+        link.setAttribute('tabindex', '-1');
+        link.style.cursor = 'default';
+      });
+    }
+    disableComingSoonLinks();
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      if (!target || !target.closest) return;
+      var link = target.closest('a[data-disabled="true"]');
+      if (!link) return;
+      event.preventDefault();
+    });
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
